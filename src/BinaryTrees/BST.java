@@ -54,7 +54,59 @@ public class BST {
             node.right = insert(value,node.right);
         }
         int height = Math.max(height(node.left),height(node.right)) + 1;
+        return rotate(node);
+    }
+
+    private Node rotate(Node node){
+        if(height(node.left) - height(node.right) > 1){
+            //left heavy
+            if (height(node.left.left) - height(node.left.right) > 1){
+                //LL case
+                return rightRotate(node);
+            }
+            if(height(node.left.left) - height(node.left.right) < 0){
+                //LR case
+                node.left = leftRotate(node.left);
+                return rightRotate(node);
+            }
+        }
+        if(height(node.left) - height(node.right) < -1){
+            //right heavy
+            if (height(node.right.left) - height(node.right.right) < 0){
+                //RR case
+                return leftRotate(node);
+            }
+            if(height(node.right.right) - height(node.right.left) < 0){
+                node.right = rightRotate(node.right);
+                return leftRotate(node);
+            }
+        }
         return node;
+    }
+
+    private Node rightRotate(Node p){
+        Node c = p.left;
+        Node t = c.right;
+
+        c.right = p;
+        p.left = t;
+
+        p.height = Math.max(height(p.left),height(p.right)) + 1;
+        c.height = Math.max(height(c.left),height(c.right)) + 1;
+
+        return c;
+    }
+    private Node leftRotate(Node p){
+       Node c = p.right;
+       Node t = c.left;
+
+       c.left = p;
+       p.right = t;
+
+       p.height = Math.max(height(p.left),height(p.right)) + 1;
+       c.height = Math.max(height(c.left),height(c.right)) + 1;
+
+       return c;
     }
 
     public boolean isBalanced(){
