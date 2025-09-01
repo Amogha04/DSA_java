@@ -12,7 +12,7 @@ public class Count_Sort {
         System.out.println(Arrays.toString(arr));
     }
 
-    private static void CountSort(int[] arr) {
+    public static void CountSort(int[] arr) {
         TreeMap<Integer,Integer> map = new TreeMap<>();
         for(int i : arr){
             int freq = map.getOrDefault(i,0);
