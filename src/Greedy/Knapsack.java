@@ -34,7 +34,7 @@ public class Knapsack {
         length = ProfitByWeight.length;
 
         double[] x = new double[length];
-        int weight = 0;
+        double weight = 0.0;
         double profit = 0.0;
         int remainingCapacity = MaxWeight;
         while (!maxHeap.isEmpty() && remainingCapacity > 0) {
