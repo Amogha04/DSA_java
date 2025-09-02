@@ -1,3 +1,5 @@
+package Backtracking;
+
 import java.util.ArrayList;
 
 public class MazeObstacles {

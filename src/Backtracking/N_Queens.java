@@ -1,3 +1,5 @@
+package Backtracking;
+
 public class N_Queens {
     public static void main(String[] args) {
         int n = 4;
